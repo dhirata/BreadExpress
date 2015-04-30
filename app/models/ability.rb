@@ -5,6 +5,11 @@ class Ability
     # set user to new User if not logged in
     user ||= User.new # i.e., a guest user
     
+    if user.role?(:admin)
+    	can :manage, :all
+
+    elsif user.role?(:customer)
+    	
 
 
 
