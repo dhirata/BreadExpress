@@ -26,13 +26,29 @@ class ItemsController < ApplicationController
 		authorize! :new, @item 
 		@item = Item.new(params[:item])
 		if @item.save
-			flash[:notice] = "Sucessfully created #{@item.name}."
+			flash[:notice] = "Successfully created #{@item.name}."
 			redirect_to @item
 		else
 			render action: 'new'
 		end
 	end
 
+	def update
+		authorize! :update, @item
+		if(@item.update_attributes(params[:item]))
+			flash[:notice] = "Successfully updated #{@item.name}."
+			redirect_to @item
+		else
+			render action: 'edit'
+		end
+	end
+
+	def destroy 
+		authorize! :destroy, @item
+		@item.destroy
+		flash[:notice] = "Successfully removed #{@item.name} from Bread Express system."
+		redirect_to items_url
+	end
 
 	private
 	def set_item
