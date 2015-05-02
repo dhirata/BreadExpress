@@ -1,3 +1,9 @@
-
+<% if current_user && current_user.role?(:admin) %>
+	<%= render :partial => 'admin_dash' %>
+<% elsif current_user && current_user.role?(:customer) %>
+	<%= render :partial => 'customer_home' %>
+<!-- Add baker and shipper roles later! -->
+<% else %>
 	<%= render :partial => 'general_home' %>
+<% end %>
 
