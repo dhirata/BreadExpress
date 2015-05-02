@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
     redirect_to home_path, error: "Record not found in the system."
   end
 
+  private
+  def current_user
+  	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end 
+  helper_method :current_user
+
   def current_order
     if(!session[:order_id].nil?)
       Order.find(session[:order_id])
@@ -23,12 +29,6 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :current_order
-
-  private
-  def current_user
-  	@current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end 
-  helper_method :current_user
 
   def logged_in?
   	current_user
