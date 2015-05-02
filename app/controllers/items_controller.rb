@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
 
 	def show
 		authorize! :read, @item 
+		@item_prices = @item.item_prices
 	end
 
 	def new 
