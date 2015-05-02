@@ -26,6 +26,7 @@ BreadExpress::Application.routes.draw do
   get 'privacy' => 'home#privacy', as: :privacy
   get 'search' => 'home#search', as: :search
   get 'cylon' => 'errors#cylon', as: :cylon
+  get 'admin_home' => 'home#admin_home', as: :admin_home
   
   # Set the root url
   root :to => 'home#home'  
