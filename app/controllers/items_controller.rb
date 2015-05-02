@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 		@items = Item.alphabetical.paginate(page: params[:page]).per_page(10)
 		@active_items = Item.alphabetical.active.paginate(page: params[:page]).per_page(10)
 		@inactive_items = Item.alphabetical.inactive.paginate(page: params[:page]).per_page(10)
+		@order_item = current_order.order_items.new
 	end
 
 	def show
