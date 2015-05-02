@@ -14,11 +14,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'bundler', '>= 1.7.0' # needed for rails-assets-materialize
-source 'https://rails-assets.org' do
-  gem 'rails-assets-materialize'
-end
-
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.1.5'
 

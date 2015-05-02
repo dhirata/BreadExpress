@@ -13,13 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require materialize
+//= require foundation
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
 
-$(document).ready(function(){
-	$('.collapsible').collapsible({
-	  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-	});
-});
