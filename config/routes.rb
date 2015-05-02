@@ -9,6 +9,7 @@ BreadExpress::Application.routes.draw do
   resources :sessions
   resources :users
   resources :carts
+  #Oops accidentally made it cart (singular)
 
   
   # Authentication routes
