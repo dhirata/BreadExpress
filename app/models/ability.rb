@@ -9,7 +9,7 @@ class Ability
     	can :manage, :all
 
     elsif user.role?(:customer)
-    	
+    end
 
 
 
