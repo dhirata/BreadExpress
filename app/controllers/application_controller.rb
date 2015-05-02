@@ -15,6 +15,15 @@ class ApplicationController < ActionController::Base
     redirect_to home_path, error: "Record not found in the system."
   end
 
+  def current_order
+    if(!session[:order_id].nil?)
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
+  end
+  helper_method :current_order
+
   private
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
