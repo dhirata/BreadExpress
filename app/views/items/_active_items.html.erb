@@ -11,11 +11,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @active_items.each do |items| %>
+      <% @active_items.each do |item| %>
         <tr>
-          <td><%= link_to customer.name, customer_path(customer) %></td>
-          <td><%= number_to_phone customer.phone %></td>
-          <td><%= mail_to customer.email, customer.email, encode: "javascript"  %></td>
+          <td><%= link_to item.name, item_path(item) %></td>
+          <td><%= item.category %></td>
+          <td><%= item.weight %></td>
         </tr>
       <% end %>
     </tbody>
