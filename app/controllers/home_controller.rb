@@ -7,6 +7,10 @@ class HomeController < ApplicationController
   		@customers = Customer.all
   		@items = Item.all
   		@orders = Order.all
+  		@active_customers = Customer.active
+  		@inactive_customers = Customer.inactive
+  		@active_items = Item.active
+  		@inactive_items = Item.inactive
   	elsif logged_in? && current_user.role?(:customer)
   		@user = current_user
   	end

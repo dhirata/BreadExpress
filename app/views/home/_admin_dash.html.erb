@@ -1,1 +1,42 @@
-_admin_dash.html.erb
+<h2><%= "Welcome To The Bread Express System, #{@user.username}!" %></h2>
+<h5>To visit your personal dashboard <%= link_to "click here", admin_home_path %>.</h5>
+<p class="supertiny">&nbsp; </p>
+
+<div class="row">
+	<div class="col s5">
+
+		<h4><b><i>Customer Info</i></b></h4>
+		  <ul class="collapsible" data-collapsible="accordion">
+		    <li>
+		      <div class="collapsible-header">Active</div>
+		      <div class="collapsible-body">
+		      	<%= render :partial => "customers/active_customers" %>
+		      </div>
+		    </li>
+		    <li>
+		      <div class="collapsible-header">Inactive</div>
+		      <div class="collapsible-body">
+		      	<%= render :partial => "customers/inactive_customers" %>
+		      </div>
+		    </li>
+		  </ul>
+
+		<h4><b><i>Item Info</i></b></h4>
+		  <ul class="collapsible" data-collapsible="accordion">
+		    <li>
+		      <div class="collapsible-header">Active</div>
+		      <div class="collapsible-body">
+		      	<%= render :partial => "items/active_items" %>
+		      </div>
+		    </li>
+		    <li>
+		      <div class="collapsible-header">Inactive</div>
+		      <div class="collapsible-body">
+		      	<%= render :partial => "items/inactive_items" %>
+		      </div>
+		    </li>
+		  </ul>
+
+	</div>
+
+</div>
