@@ -32,9 +32,15 @@
 
 
 
-
-
-
+    </ul>
+    <!-- logout -->
+    <% if logged_in? %>
+      <ul class = "right">
+        <li>
+          <%= link_to "Logout", logout_path %>
+        </li>
+      </ul>
+    <% end %>
 
 
     </section>
