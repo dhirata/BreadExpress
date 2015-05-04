@@ -14,10 +14,10 @@ class SessionsController < ApplicationController
 	end 
 
 	def destroy 
-		session[:user_id] = nil
 		if current_order.payment_receipt.nil?
 			current_order.delete
 		end
+		session[:user_id] = nil
 		session[:order_id] = nil
 		redirect_to home_path, notice: "Logged out!"
 	end

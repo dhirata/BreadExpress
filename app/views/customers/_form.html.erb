@@ -8,13 +8,17 @@
     <%= f.input :email, input_html: {class: "avg"} %>
 
 
+    <div class="span6">
+      <div class="well">
+        <legend>Related User</legend>
 
+            <%= student_form.simple_fields_for :user do |user_form| %>
+              <%= render :partial => "user_fields", :locals => { :f => user_form } %>
+            <% end %> 
 
-
-
-
-    
-
+        </div>
+      </div>
+    </div>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'button radius' %>

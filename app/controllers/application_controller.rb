@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     else
       @new_order = Order.new(params[:order])
       @new_order.customer_id = current_user.customer.id
-      if current_user.role == 'customer'
+      if current_user.role? :customer
         @new_order.address_id = current_user.customer.addresses.first.id
       else
         @new_order.address_id = Address.all.first.id

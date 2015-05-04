@@ -1,0 +1,19 @@
+<p>
+	<h4>
+	  Name: <%= link_to @user.customer.name, customer_path(@user.customer) %>
+	</h4>
+</p>
+
+<p>
+  <b>Email:</b> <%= @user.customer.email %>
+</p>
+
+<p>
+  <b>Role:</b> <%= @user.is_admin? ? "Admin" : "Customer" %>
+</p>
+
+<% if @user.role? (:admin) %>
+	<p>
+	  <b>Active:</b> <%= @user.active ? "Yes" : "No" %>
+	</p>
+<% end %>
