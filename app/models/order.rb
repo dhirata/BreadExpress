@@ -60,7 +60,6 @@ class Order < ActiveRecord::Base
   # Callbacks
   before_destroy :is_destroyable?
   after_destroy :remove_order_items
-
   
   private
   def customer_is_active_in_system
@@ -104,5 +103,6 @@ class Order < ActiveRecord::Base
   def remove_order_items
     self.order_items.each{ |oi| oi.destroy }
   end
+
 
 end

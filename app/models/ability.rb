@@ -9,6 +9,10 @@ class Ability
     	can :manage, :all
 
     elsif user.role?(:customer)
+    	
+
+    else
+    	can :read, items
     end
 
 

@@ -22,10 +22,20 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_order
-    if(!session[:order_id].nil?)
-      Order.find(session[:order_id])
+    if !session[:order_id].nil?
+      return Order.find(session[:order_id])
     else
-      Order.new
+      @new_order = Order.new(params[:order])
+      @new_order.customer_id = current_user.customer.id
+      if current_user.role == 'customer'
+        @new_order.address_id = current_user.customer.addresses.first.id
+      else
+        @new_order.address_id = Address.all.first.id
+      end
+      @new_order.date = Date.today
+      @new_order.grand_total = 0
+      @new_order.save!
+      return @new_order
     end
   end
   helper_method :current_order

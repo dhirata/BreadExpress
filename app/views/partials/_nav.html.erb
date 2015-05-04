@@ -29,15 +29,29 @@
 
         <!-- ADMIN ONLY OPTIONS -->
 
+      <!-- logout -->
 
+      <% if logged_in? %>
+        <li>
+          <%= link_to "Logout", logout_path %>
+        </li>
+      <% end %>
 
 
     </ul>
-
-
+        <% if logged_in? && (current_user.role?(:admin) || current_user.role?(:customer)) %>
+      <div class="right">
+        <h8 class="cart-text"><%= render 'layouts/cart_text' %></h8>
+      </div>
+    <% end %>
+    
 
     </section>
 
+
   </nav>
-  
+
+
+
+
 </div>

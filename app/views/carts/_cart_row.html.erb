@@ -1,0 +1,28 @@
+<fieldset>
+
+  <div class="row">
+    <div class="small-8 columns">
+      <h4><%= item.name %></h4>
+    </div>
+    <div class="small-4 columns">
+      
+      <%= form_for order_item, remote: true do |f| %>
+        <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency order_item.item.current_price %></span></h4>
+        <div class="row">
+          <div class="small-4 columns">
+            <%= f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1 %>
+            <%= f.hidden_field :item_id, value: item.id %>
+          </div>
+          <div class="small-8 columns text-right">
+            <ul class="button-group right">
+              <li><%= f.submit "Update", class: "button" %></li>
+              <li><%= link_to "Delete", order_item, { data: { confirm: "Are you sure you wish to delete the item '#{order_item.item.name}' from your cart?" }, method: :delete, remote: true, class: "button alert" } %></li>
+            </ul>
+          </div>
+        </div>
+        <h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency order_item.subtotal %></span></h4>
+      <% end %>
+    </div>
+    
+  </div>
+</fieldset>

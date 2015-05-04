@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   end
 
   def new
-
+    @order = Order.new
   end
 
   def create
@@ -58,13 +58,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:address_id)
+    params.require(:order).permit(:customer_id, :address_id, :date, :grand_total, :payment_receipt)
   end
-
-
-
-
-
-
 
 end

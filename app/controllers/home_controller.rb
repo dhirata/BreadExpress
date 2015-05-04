@@ -13,6 +13,7 @@ class HomeController < ApplicationController
   		@inactive_items = Item.inactive
   	elsif logged_in? && current_user.role?(:customer)
   		@user = current_user
+  		@items = Item.all
   	end
   		
   end

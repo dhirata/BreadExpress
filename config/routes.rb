@@ -5,10 +5,10 @@ BreadExpress::Application.routes.draw do
   resources :customers
   resources :orders
   resources :items
-  resources :order_items
+  resources :order_items, only: [:create, :update, :destroy]
   resources :sessions
   resources :users
-  resources :carts
+  resource :cart, only: [:show]
   #Oops accidentally made it cart (singular)
   resources :item_prices
   
