@@ -4,6 +4,11 @@
   <b>Name</b>: <%= @item.name %>
 </p>
 
+<p>
+  <b>Price</b>: <span style="color: green"><%= number_to_currency @item.current_price %></span>
+</p>
+
+
 <% unless @item.picture_url.nil? %>
     <p><%= image_tag @item.picture_url %></p>
 <% end %>

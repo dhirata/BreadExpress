@@ -5,6 +5,10 @@
     	<h3>Item Price</h3>
     	<%= render :partial => "item_price_history" %>
     <% end %>
+    <% if current_user.role?(:customer) %>
+    	<h3>Recommended Items</h3>
+    	<%= render :partial => "recommended" %>
+    <% end %>
   </div>
   <div class="small-5 columns">
     &nbsp;

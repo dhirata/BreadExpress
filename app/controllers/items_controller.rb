@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
 	def show
 		authorize! :read, @item 
 		@item_prices = @item.item_prices.chronological
+		@recommended_items = Item.for_category(@item.category)
 	end
 
 	def new 
