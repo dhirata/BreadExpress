@@ -1,0 +1,28 @@
+<h3>Item Information</h3>
+
+<p>
+  <b>Name</b>: <%= @item.name %>
+</p>
+
+<% unless @item.picture_url.nil? %>
+    <p><%= image_tag @item.picture_url %></p>
+<% end %>
+
+<p>
+  <b>Description</b>: <br />
+  <%= @item.description %>
+</p>
+
+<p>
+  <b>Units per item </b>: <%= @item.units_per_item %>
+</p>
+
+<% if current_user.role?(:admin) %> 
+	<p>
+	  <b>Weight</b>: <%= @item.weight %>
+	</p>
+	<p>
+	  <b>Active</b>: <%= @item.active ? 'Yes' : 'No' %>
+	</p>
+<% end %>
+
