@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 
 	def show
 		authorize! :read, @item 
-		@item_prices = @item.item_prices
+		@item_prices = @item.item_prices.chronological
 	end
 
 	def new 
