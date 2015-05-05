@@ -1,0 +1,20 @@
+<% if @item_prices.empty? %>
+  &nbsp;&nbsp;<em>None at this time</em>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Dates</th>
+  			<th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @item_prices.each do |price| %>
+        <tr>
+          <td><%= "#{price.start_date} - #{price.end_date}" %></td>
+          <td><%= price.price  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
