@@ -2,19 +2,17 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Item</legend>
       <%= render :partial => "item_fields", :locals => { :f => item_form } %>
-  </fieldset>
 
     <div class="span6">
-      <fieldset>
-        <legend>Item Price</legend>
+        <legend></legend>
             <%= item_form.simple_fields_for :item_prices do |item_price_form| %>
               <%= render :partial => "item_price_fields", :locals => { :f => item_price_form } %>
             <% end %> 
-        </fieldset>
       </div>  
+  </fieldset>
 
     <div class="form-actions">
-      <%= customer_form.submit nil, :class => 'button' %>
-      <%= link_to 'Cancel', customers_path, :class => 'button alert' %>
+      <%= item_form.submit nil, :class => 'button' %>
+      <%= link_to 'Cancel', items_path, :class => 'button alert' %>
     </div>
 <% end %>
