@@ -1,0 +1,9 @@
+<%= f.input :name %>
+<%= f.input :description %>
+<div class="field">
+	<%= f.label :photo %><br />
+	<%= f.file_field :photo %>
+</div>
+<%= f.input :units_per_item %>
+<%= f.input :weight %>
+<%= f.input :active,     as: :radio_buttons %>
