@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
 	def new 
 		authorize! :create, @item 
 		@item = Item.new
+		@item.item_prices.build
 	end
 
 	def edit
