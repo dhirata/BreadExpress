@@ -55,7 +55,7 @@ class CustomersController < ApplicationController
 
   def customer_params
     reset_role_param unless current_user.role? :admin
-    params.require(:customer).permit(:first_name, :last_name, :email, :phone, :active, user_attributes: [:username, :password, :password_confirmation, :role, :active], addresses_attributes: [:recipient, :street_1, :street_2, :city, :state, :zip, :active, :is_billing, :_destroy])
+    params.require(:customer).permit(:first_name, :last_name, :email, :phone, :active, user_attributes: [:username, :password, :password_confirmation, :role, :active, :_destroy], addresses_attributes: [:recipient, :street_1, :street_2, :city, :state, :zip, :active, :is_billing, :_destroy])
   end
 
   def reset_role_param

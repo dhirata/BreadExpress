@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
 
 	def create
 		authorize! :new, @item 
-		@item = Item.new(params[:item])
+		@item = Item.new(item_params)
 		if @item.save
 			flash[:notice] = "Successfully created #{@item.name}."
 			redirect_to @item
@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
 
 	def update
 		authorize! :update, @item
-		if(@item.update_attributes(params[:item]))
+		if(@item.update(item_params))
 			flash[:notice] = "Successfully updated #{@item.name}."
 			redirect_to @item
 		else
@@ -57,4 +57,8 @@ class ItemsController < ApplicationController
 	def set_item
 		@item = Item.find(params[:id])
 	end
+
+	def item_params
+    	params.require(:item).permit(:name, :description, :picture, :category, :units_per_item, :weight, :active, item_prices_attributes: [:id, :price, :start_date, :_destroy])
+  	end
 end
