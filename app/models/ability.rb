@@ -12,7 +12,8 @@ class Ability
     	
 
     else
-    	can :read, items
+    	can :read, Item
+      can :create, Customer
     end
 
 

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   # Validations
   validates :username, presence: true, uniqueness: { case_sensitive: false}
-  validates :role, inclusion: { in: %w[admin baker shipper customer], message: "is not a recognized role in system" }
+  validates_inclusion_of :role, :in => %w[admin baker shipper customer], message: "is not a recognized role in system"
   validates_presence_of :password, on: :create 
   validates_presence_of :password_confirmation, on: :create 
   validates_confirmation_of :password, on: :create, message: "does not match"

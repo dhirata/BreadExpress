@@ -1,5 +1,5 @@
 <% if logged_in? && current_user.role?(:admin) %>
-	<%= f.input :role, :collection => User::ROLES, :prompt => true %>
+	<%= f.input :role, :collection => User::ROLES, :include_blank => true %>
 <% else %>
 	<%= f.hidden_field :role, value: 'customer' %>
 <% end %>
