@@ -52,6 +52,11 @@ class OrdersController < ApplicationController
     redirect_to orders_url, notice: "This order was removed from the system."
   end
 
+  def checkout
+    @order = current_order
+    @order_items = @order.order_items
+  end
+
   private
   def set_order
     @order = Order.find(params[:id])
