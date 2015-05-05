@@ -24,28 +24,28 @@ class OrdersController < ApplicationController
     end
   end
 
-  def new
-    @order = Order.new
-  end
+  # def new
+  #   # @order = Order.new
+  # end
 
-  def create
-    @order = Order.new(order_params)
+  # def create
+  #   # @order = Order.new(order_params)
 
-    if @order.save
+  #   # if @order.save
 
-      redirect_to @order, notice: "Thank you for ordering from Bread Express."
-    else
-      render action: 'new'
-    end
-  end
+  #   #   redirect_to @order, notice: "Thank you for ordering from Bread Express."
+  #   # else
+  #   #   render action: 'new'
+  #   # end
+  # end
 
-  def update
-    if @order.update(order_params)
-      redirect_to @order, notice: "Your order was revised in the system."
-    else
-      render action: 'edit'
-    end
-  end
+  # def update
+  #   # if @order.update(order_params)
+  #   #   redirect_to @order, notice: "Your order was revised in the system."
+  #   # else
+  #   #   render action: 'edit'
+  #   # end
+  # end
 
   def destroy
     @order.destroy
