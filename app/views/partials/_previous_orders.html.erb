@@ -1,0 +1,22 @@
+<% if @previous_orders.empty? %>
+  &nbsp;&nbsp;<em>None at this time</em>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+  		<th>Recipient</th>
+  		<th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @previous_orders.each do |order| %>
+        <tr>
+          <td><%= order.date.strftime('%m/%d/%y') %></td>
+          <td><%= order.address.recipient %></td>
+          <td><span style="color: green"><%= number_to_currency order.grand_total  %></span></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
