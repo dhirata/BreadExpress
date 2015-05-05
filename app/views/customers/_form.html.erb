@@ -7,7 +7,7 @@
     <div class="span6">
       <fieldset>
         <legend>Related User</legend>
-            <%= customer_form.simple_fields_for :users do |user_form| %>
+            <%= customer_form.simple_fields_for :user do |user_form| %>
               <%= render :partial => "user_fields", :locals => { :f => user_form } %>
             <% end %> 
         </fieldset>
@@ -19,6 +19,9 @@
             <%= customer_form.simple_fields_for :addresses do |address_form| %>
               <%= render :partial => "address_fields", :locals => { :f => address_form } %>
             <% end %> 
+            <p>
+            <br /><%= customer_form.link_to_add("Add Address", :addresses, :class => 'button') %>
+            </p>
         </fieldset>
       </div>      
 
