@@ -28,7 +28,6 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    flash[:notice] = "#{@user.user.id} is derp."
     if @customer.save && current_user.role?(:admin)
       redirect_to @customer, notice: "#{@customer.proper_name} was added to the system."
     elsif @customer.save && logged_in? == false
