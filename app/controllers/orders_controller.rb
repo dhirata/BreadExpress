@@ -55,6 +55,7 @@ class OrdersController < ApplicationController
   def checkout
     @order = current_order
     @order_items = @order.order_items
+    @subtotal = @order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.item.current_price) : 0 }.sum
   end
 
   private

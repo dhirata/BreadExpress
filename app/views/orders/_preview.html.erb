@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_items.each do |item| %>
+      <tr>
+        <td><%= item.item.name %></td>
+        <td><span style="color: green"><%= number_to_currency item.item.current_price %></span></td>
+        <td><%= item.quantity %></td>
+        <td><span style="color: green"><%= number_to_currency item.subtotal %></span></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <h4 class="text-right">Subtotal: <span style="color: green"><%= number_to_currency @subtotal %></span></h4>
+</table>

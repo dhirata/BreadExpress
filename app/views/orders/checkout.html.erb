@@ -1,1 +1,13 @@
-checkout.html.erb
+<div class="checkout">
+	<fieldset>
+		<fieldset>
+			<h3>Your Order</h3>
+  			<%= render :partial => "preview" %>
+  		</fieldset>
+  		<fieldset>
+  			<h3>Payment</h3>
+  			<%= render :partial => "form"
+  		</fieldset>
+  	</fieldset>
+  	<%= link_to 'Finish', home_path, :class => 'button expand' %>
+</div>
