@@ -1,7 +1,13 @@
 <% if logged_in? && current_user.role?(:admin) %>
-<%= f.input :role, :collection => User::ROLES, :prompt => true %>
+	<%= f.input :role, :collection => User::ROLES, :prompt => true %>
+<% else %>
+	<%= f.hidden_field :role, value: 'customer' %>
 <% end %>
 <%= f.input :username %>
 <%= f.input :password %>
 <%= f.input :password_confirmation %>
-<%= f.input :active,     as: :radio_buttons %>
+<% if logged_in? && current_user.role?(:admin) %>
+	<%= f.input :active,     as: :radio_buttons %>
+<% else %>
+	<%= f.hidden_field :active, value: true %>
+<% end %>

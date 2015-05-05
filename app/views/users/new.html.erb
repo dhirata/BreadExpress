@@ -1,13 +1,5 @@
-<% if current_user.role?(:admin) %>
-	<div class="row">
-	  <div class="small-8 columns">
-	    <%= render :partial => "form" %>
-	  </div>
-	</div>
-<% else %>
-	<div class="row">
-		<div class="small-8 columns">
-			<%= render :partial => "new_customer_form" %>
-		</div>
-	</div>
-<% end %>
+<div class="row">
+  <div class="small-8 columns">
+    <%= render :partial => "form" %>
+  </div>
+</div>

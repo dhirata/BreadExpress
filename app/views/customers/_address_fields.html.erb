@@ -1,0 +1,12 @@
+<%= f.input :recipient, input_html: {class: "avg"} %>
+<%= f.input :street_1, input_html: {class: "avg"} %>
+<%= f.input :street_2, input_html: {class: "avg"} %>
+<%= f.input :city, input_html: {class: "avg"} %>
+<%= f.input :state, collection: Address::STATES_LIST, include_blank: true, input_html: {class: "avg"} %>
+<%= f.input :zip, input_html: {class: "avg"} %>
+<%= f.input :is_billing, label: 'Billing? ' %>
+<% if logged_in? && current_user.role?(:admin) %>
+	<%= f.input :active,     as: :radio_buttons %>
+<% else %>
+	<%= f.hidden_field :active, value: true %>
+<% end %>
