@@ -11,7 +11,7 @@
     <tbody>
       <% @item_prices.each do |price| %>
         <tr>
-          <td><%= "#{price.start_date} - #{price.end_date}" %></td>
+          <td><%= "#{price.start_date.strftime('%m/%d/%y')} - #{price.end_date.strftime('%m/%d/%y')}" %></td>
           <td><%= price.price  %></td>
         </tr>
       <% end %>
