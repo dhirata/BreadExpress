@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   include BreadExpressHelpers::Baking
 
   def home
+    @all_items
   	if logged_in? && current_user.role?(:admin)
   		@user = current_user
   		@customers = Customer.all
