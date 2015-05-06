@@ -16,6 +16,12 @@
         <td><span style="color: green"><%= number_to_currency item.subtotal %></span></td>
       </tr>
     <% end %>
+    <td>Subtotal</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><span style="color: green"><%= number_to_currency @subtotal %></span></td>
   </tbody>
   <h4 class="text-right">Subtotal: <span style="color: green"><%= number_to_currency @subtotal %></span></h4>
+  <h5 class="text-right">+ Shipping: <span style="color: green"><%= number_to_currency @shipping %></span></h5>
+  <h4 class="text-right">Grand Total: <span style="color: green"><%= number_to_currency @grand_total %></span></h4>
 </table>
