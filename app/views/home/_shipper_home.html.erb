@@ -1,0 +1,11 @@
+<h2><%= "Welcome To The Bread Express System, #{@user.username}!" %></h2>
+<p>This is your shipping list</p>
+<p class="supertiny">&nbsp; </p>
+<% if @order_items.empty? %>
+	<p>Nothing to ship!</p>
+<% end %>
+<div class="row">
+<div class="small-5 columns">
+	<%= render :partial => "shipping_list" %>
+</div>
+</div>

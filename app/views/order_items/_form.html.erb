@@ -1,0 +1,15 @@
+<%= simple_form_for @order_item, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Order Item</legend>
+	<%= f.hidden_field :order_id, value: @order_item.order_id %> 
+	<%= f.hidden_field :item_id, value: @order_item.item_id %> 
+  	<%= f.hidden_field :quantity, value: @order_item.quantity %>
+
+    <%= f.check_box :shipped_on, Date.today, nil %>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'button' %>
+      <%= link_to 'Cancel',users_path, :class => 'button alert' %>
+    </div>
+  </fieldset>
+<% end %>

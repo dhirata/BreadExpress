@@ -1,0 +1,20 @@
+<% unless @order_items.empty? %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_items.each do |oi| %>
+      <tr>
+        <td><%= oi.item.name %></td>
+        <td><%= oi.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<% end %>

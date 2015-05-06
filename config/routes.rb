@@ -34,6 +34,7 @@ BreadExpress::Application.routes.draw do
   get 'admin_home' => 'home#admin_home', as: :admin_home
   get 'customer_home' => 'home#customer_home', as: :customer_home
   get 'baker_home' => 'home#baker_home', as: :baker_home
+  get 'shipper_home' => 'home#shipper_home', as: :shipper_home
   get 'checkout' => 'orders#checkout', as: :checkout
 
 

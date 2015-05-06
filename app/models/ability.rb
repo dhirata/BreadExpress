@@ -46,6 +46,10 @@ class Ability
 
       can :read, :all
 
+    elsif user.role?(:shipper)
+
+      can :manage, OrderItem  
+
     else
       can :create, Customer
       can :new, Customer

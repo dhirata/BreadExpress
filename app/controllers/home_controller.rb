@@ -2,7 +2,6 @@ class HomeController < ApplicationController
   include BreadExpressHelpers::Baking
 
   def home
-    @all_items
   	if logged_in? && current_user.role?(:admin)
   		@user = current_user
   		@customers = Customer.all
@@ -20,6 +19,10 @@ class HomeController < ApplicationController
       @muffins = create_baking_list_for("muffins")
       @bread = create_baking_list_for("bread")
       @pastries = create_baking_list_for("pastries")
+    elsif logged_in? && current_user.role?(:shipper)
+      @user = current_user
+      @orders = Order.not_shipped
+      @order_items = OrderItem.where(shipped_on: nil)
   	end
   		
   end

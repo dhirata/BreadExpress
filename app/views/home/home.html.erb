@@ -5,6 +5,8 @@
 <!-- Add baker and shipper roles later! -->
 <% elsif current_user && current_user.role?(:baker) %>
 	<%= render :partial => 'baker_home' %>
+<% elsif current_user && current_user.role?(:shipper) %>
+	<%= render :partial => 'shipper_home' %>
 <% else %>
 	<%= render :partial => 'general_home' %>
 <% end %>
