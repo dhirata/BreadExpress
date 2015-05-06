@@ -47,7 +47,6 @@ class Ability
       can :read, :all
 
     else
-    	can :read, :all
       can :create, Customer
       can :new, Customer
       can :create, User
