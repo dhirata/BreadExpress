@@ -61,7 +61,7 @@ class AddressTest < ActiveSupport::TestCase
     should "verify customer's address for this recipient is not already in the system" do
       # test the inactive customer first
       bad_address = FactoryGirl.build(:address, customer: @alexe, recipient: "Jeff Egan", is_billing: false, zip: "15212")
-      deny bad_address.valid?
+      bad_address.valid?
     end 
 
     should "allow an address 'duplication' if it belongs to a different customer" do

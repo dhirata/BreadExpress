@@ -21,7 +21,7 @@ class Address < ActiveRecord::Base
   validates_format_of :zip, with: /\A\d{5}\z/, message: "should be five digits long"
   validates_inclusion_of :state, in: STATES_LIST.map{|key, value| value}, message: "is not an option"
   # validates_inclusion_of :state, in: STATES_LIST.to_h.values, message: "is not an option"
-  validate :customer_is_active_in_system
+  validate :customer_is_active_in_system, on: :create
   validate :address_is_not_a_duplicate, on: :create
 
   def already_exists?
