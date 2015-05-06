@@ -17,7 +17,6 @@ class OrdersController < ApplicationController
 
   def show
     @order_items = @order.order_items.to_a
-    current_order.order_items = nil
     if current_user.role?(:customer)
       @previous_orders = current_user.customer.orders.chronological.to_a
     else
@@ -25,20 +24,20 @@ class OrdersController < ApplicationController
     end
   end
 
-  # def new
-  #   # @order = Order.new
-  # end
+  def new
+    @order = Order.new
+  end
 
-  # def create
-  #   # @order = Order.new(order_params)
+  def create
+    @order = Order.new(order_params)
 
-  #   # if @order.save
+    if @order.save
 
-  #   #   redirect_to @order, notice: "Thank you for ordering from Bread Express."
-  #   # else
-  #   #   render action: 'new'
-  #   # end
-  # end
+      redirect_to @order, notice: "Thank you for ordering from Bread Express."
+    else
+      render action: 'new'
+    end
+  end
 
   def update
     if @order.update(order_params)
@@ -60,7 +59,18 @@ class OrdersController < ApplicationController
     @shipping = @order.shipping_costs
     @grand_total = @order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.item.current_price) : 0 }.sum + @order.shipping_costs
     @subtotal = @grand_total - @shipping
-    @addresses = current_user.customer.addresses.active
+    if current_user.role? (:admin)
+      @addresses = Address.active
+    else
+      @addresses = current_user.customer.addresses.active
+    end
+    @order.grand_total = @grand_total
+    @new_order = Order.new
+    @new_order.customer_id = @order.customer_id
+    @new_order.address_id = @order.address_id
+    @new_order.date = Date.today
+    @new_order.grand_total = @grand_total
+    @new_order.save
   end
 
   private

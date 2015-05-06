@@ -3,7 +3,7 @@ class OrderItemsController < ApplicationController
 	# before_action :set_order_item, only: [:update, :destroy]
 
 	def create
-		authorize! :new, @order_item
+		# authorize! :new, @order_item
 		@order = current_order
 		@order_item = @order.order_items.new(order_item_params)
 		@order.save
@@ -11,7 +11,7 @@ class OrderItemsController < ApplicationController
 	end
 
 	def update
-		authorize! :update, @order_item
+		# authorize! :update, @order_item
 		@order = current_order
     	@order_item = @order.order_items.find(params[:id])
     	@order_item.update_attributes(order_item_params)
@@ -19,7 +19,7 @@ class OrderItemsController < ApplicationController
 	end
 
 	def destroy
-		authorize! :destroy, @order_item
+		# authorize! :destroy, @order_item
 		@order = current_order
     	@order_item = @order.order_items.find(params[:id])
     	@order_item.destroy

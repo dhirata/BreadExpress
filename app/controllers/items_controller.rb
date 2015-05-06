@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 	before_action :set_item, only: [:show, :edit, :update, :destroy]
-	before_filter :check_login
+	before_filter :check_login, except: [:index, :show]
 
 	def index
 		authorize! :read, @items

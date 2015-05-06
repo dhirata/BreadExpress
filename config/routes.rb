@@ -27,7 +27,7 @@ BreadExpress::Application.routes.draw do
   get 'search' => 'home#search', as: :search
   get 'cylon' => 'errors#cylon', as: :cylon
   get 'admin_home' => 'home#admin_home', as: :admin_home
-  get 'customer_home' => 'items#index', as: :customer_home
+  get 'customer_home' => 'home#customer_home', as: :customer_home
   get 'checkout' => 'orders#checkout', as: :checkout
   
   # Set the root url

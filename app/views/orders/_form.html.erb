@@ -2,6 +2,7 @@
 
 	<%= f.hidden_field :date, value: Date.today %> 
 	<%= f.hidden_field :customer_id, value: current_user.customer.id %> 
+  <%= f.hidden_field :grand_total, value: @grand_total %> 
 	<%= f.collection_select :address_id, @addresses, :id, lambda{|a| a.recipient + " : " + a.street_1}, prompt: "Select ..." %>
 
     <%= f.input :credit_card_number, as: :integer %>
