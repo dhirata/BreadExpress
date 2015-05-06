@@ -1,7 +1,7 @@
 <div class="well">
-	<h3><%= pluralize @customer_orders.size, 'Order' %> Placed</h3>
+	<h3><%= pluralize @user_orders.size, 'Order' %> Placed</h3>
 	<ul>
-		<% @customer_orders.each do |order| %>
+		<% @user_orders.each do |order| %>
 			<li><%= link_to order.date, order_path(order) %>
 				&nbsp;&nbsp; <%= order.grand_total %>
 			 	&nbsp;&nbsp; <%= order.address.recipient %>

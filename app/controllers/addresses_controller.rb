@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-  before_action :check_login
+  before_action :check_login, except: [:new, :create]
   before_action :set_address, only: [:show, :edit, :update, :destroy]
   authorize_resource
   
@@ -27,7 +27,7 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     
     if @address.save
-      redirect_to addresses_path, notice: "The address was added to the system."
+      redirect_to home_path, notice: "The address was added to the system."
     else
       render action: 'new'
     end

@@ -9,7 +9,7 @@
 </p>
 
 <p>
-  <b>Role:</b> <%= @user.is_admin? ? "Admin" : "Customer" %>
+  <b>Role:</b> <%= @user.role?(:admin) ? "Admin" : "Customer" %>
 </p>
 
 <% if @user.role? (:admin) %>
