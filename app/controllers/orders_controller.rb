@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
     @grand_total = @order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.item.current_price) : 0 }.sum + @order.shipping_costs
     @subtotal = @grand_total - @shipping
     if current_user.role? (:admin)
-      @addresses = Address.active
+      @addresses = Address.active.by_recipient
     else
       @addresses = current_user.customer.addresses.active
     end
