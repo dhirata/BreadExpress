@@ -7,7 +7,7 @@
         <li><%= link_to "Home", home_path %></li>
         <% end %>
         <% if !logged_in? %>
-          <li><%= link_to "View Menu", home_menu_path %></li>
+          <li><%= link_to "View Menu", items_path %></li>
         <% end %>
         <% if logged_in? && current_user.role?(:customer) %>
           <!-- options for items -->

@@ -1,4 +1,4 @@
     <% if logged_in? && (current_user.role?(:customer)) %>
-        <h2><%= "Welcome To Bread Express, #{current_user.customer.propername}!" %></h2>
+        <h2><%= "Welcome To Bread Express, #{current_user.customer.proper_name}!" %></h2>
         <p>Click <%= link_to "here", items_path %> to start shopping now! </p>
     <% end %>
