@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
 
   def show
     @order_items = @order.order_items.to_a
+    current_order.order_items = nil
     if current_user.role?(:customer)
       @previous_orders = current_user.customer.orders.chronological.to_a
     else
@@ -39,13 +40,14 @@ class OrdersController < ApplicationController
   #   # end
   # end
 
-  # def update
-  #   # if @order.update(order_params)
-  #   #   redirect_to @order, notice: "Your order was revised in the system."
-  #   # else
-  #   #   render action: 'edit'
-  #   # end
-  # end
+  def update
+    if @order.update(order_params)
+      @order.pay
+      redirect_to @order, notice: "Your order was placed."
+    else
+      render action: 'checkout'
+    end
+  end
 
   def destroy
     @order.destroy
@@ -56,8 +58,9 @@ class OrdersController < ApplicationController
     @order = current_order
     @order_items = @order.order_items
     @shipping = @order.shipping_costs
-    @grand_total = @order.grand_total
+    @grand_total = @order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.item.current_price) : 0 }.sum + @order.shipping_costs
     @subtotal = @grand_total - @shipping
+    @addresses = current_user.customer.addresses.active
   end
 
   private
@@ -66,7 +69,9 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:customer_id, :address_id, :date, :grand_total, :payment_receipt)
+    params[:order][:expiration_year]= params[:order][:expiration_year].to_i
+    params[:order][:expiration_month]= params[:order][:expiration_month].to_i
+    params.require(:order).permit(:customer_id, :address_id, :date, :grand_total, :payment_receipt, :credit_card_number, :expiration_month, :expiration_year)
   end
 
 end

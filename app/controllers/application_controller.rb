@@ -34,7 +34,6 @@ class ApplicationController < ActionController::Base
       end
       @new_order.date = Date.today
       @new_order.grand_total = 0
-      @new_order.save!
       return @new_order
     end
   end

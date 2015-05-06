@@ -1,1 +1,15 @@
-_form.html.erb
+<%= simple_form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+
+	<%= f.hidden_field :date, value: Date.today %> 
+	<%= f.hidden_field :customer_id, value: current_user.customer.id %> 
+	<%= f.collection_select :address_id, @addresses, :id, lambda{|a| a.recipient + " : " + a.street_1}, prompt: "Select ..." %>
+
+    <%= f.input :credit_card_number, as: :integer %>
+    <%= f.input :expiration_month, collection: 1..12 %>
+    <%= f.input :expiration_year, collection: Date.today.year..Date.today.year+5 %>
+
+    <div class="form-actions">
+      <%= f.submit "Finish", :class => 'button' %>
+      <%= link_to 'Cancel', orders_path, :class => 'button alert' %>
+    </div>
+<% end %>

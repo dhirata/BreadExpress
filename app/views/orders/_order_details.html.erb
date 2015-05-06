@@ -17,12 +17,19 @@
 </p>
 
 <p>
-  <b>Total Cost</b>: <%= number_to_currency @order.grand_total %>
+  <b>Total Cost</b>: <%= number_to_currency @order.order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.item.current_price) : 0 }.sum + @order.shipping_costs %>
 </p>
 
 <p>
   <%= render partial: "partials/order_item_list", locals: {order_items: @order_items, date: @order.date} %>
 </p>
+
+<% if !@order.payment_receipt.nil? %>
+<p>
+  <b>Receipt</b>: <%= @order.payment_receipt %>
+</p>
+<% end %>
+
 
 <p>
   <em>Thanks for being a Bread Express customer since <%= @order.customer.created_at.year %>.</em>

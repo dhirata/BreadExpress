@@ -16,4 +16,6 @@
 </div>
 
 <!-- Add buttons to list all, edit project or destroy object -->
+<% if current_user.role?(:admin) %>
 <%= render partial: "partials/object_options", locals: {model_name: "item", object: @item}  %>
+<% end %>

@@ -1,13 +1,13 @@
 <div class="checkout">
 	<fieldset>
+		<h3>Checkout</h3>
 		<fieldset>
 			<h3>Your Order</h3>
   			<%= render :partial => "preview" %>
   		</fieldset>
   		<fieldset>
   			<h3>Payment</h3>
-  			
+  			<%= render :partial => "form" %>
   		</fieldset>
   	</fieldset>
-  	<%= link_to 'Finish', home_path, :class => 'button expand' %>
 </div>

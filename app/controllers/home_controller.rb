@@ -12,6 +12,7 @@ class HomeController < ApplicationController
   		@active_items = Item.active
   		@inactive_items = Item.inactive
   	elsif logged_in? && current_user.role?(:customer)
+      redirect_to customer_home_path
   		@user = current_user
   		@items = Item.all
   	end

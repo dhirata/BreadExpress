@@ -7,6 +7,8 @@
     </ul>
   </div>
 <% end %>
+<fieldset>
+  <h3>Your Cart</h3>
 <% if @order_items.size == 0 %>
   <p class="text-center">
     There are no items in your shopping cart.  Please <%= link_to "go back", items_path %> and add some items to your cart.
@@ -17,3 +19,4 @@
   <% end %>
   <%= link_to 'Checkout', checkout_path, :class => 'button expand' %>
 <% end %>
+</fieldset>
