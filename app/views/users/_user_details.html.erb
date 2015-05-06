@@ -1,15 +1,20 @@
+<% if @user.role? (:admin) || @user.role?(:customer) %>
 <p>
-	<h4>
+	<h5>
 	  Name: <%= link_to @user.customer.name, customer_path(@user.customer) %>
-	</h4>
+	</h5>
 </p>
 
 <p>
   <b>Email:</b> <%= @user.customer.email %>
 </p>
+<% end %>
+<p>
+  <b>Username:</b> <%= @user.username %>
+</p>
 
 <p>
-  <b>Role:</b> <%= @user.role?(:admin) ? "Admin" : "Customer" %>
+  <b>Role:</b> <%= @user.role.capitalize %>
 </p>
 
 <% if @user.role? (:admin) %>

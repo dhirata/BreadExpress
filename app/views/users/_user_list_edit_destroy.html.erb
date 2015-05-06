@@ -11,7 +11,7 @@
   <% if @user.role? :admin %>
 	  &nbsp;&nbsp;
 	  <%= link_to(user_path(@user), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{@user.username}"}, class: 'button alert') do %>
-	    &nbsp;<%= "Delete #{@user.name}" %>
+	    &nbsp;<%= "Delete #{@user.username}" %>
 	  <% end %>
   <% end %>
 </div>

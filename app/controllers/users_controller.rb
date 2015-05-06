@@ -27,9 +27,11 @@ class UsersController < ApplicationController
 
 	def show
 		authorize! :read, :all
-		@user_customer = @user.customer
-		@user_orders = @user_customer.orders 
-		@user_addresses = @user_customer.addresses 
+		if @user.customer
+			@user_customer = @user.customer
+			@user_orders = @user_customer.orders 
+			@user_addresses = @user_customer.addresses
+		end 
 	end
 
 	def update
