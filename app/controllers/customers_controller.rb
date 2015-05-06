@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     if @customer.save && !logged_in?
       session[:user_id] = @customer.user_id
-      redirect_to address_new_path, notice: "Thank you for signing up! Please create an address!"
+      redirect_to root_url, notice: "Thank you for signing up!"
     elsif @customer.save && current_user.role?(:admin)
       redirect_to @customer, notice: "#{@customer.proper_name} was added to the system."
     else
