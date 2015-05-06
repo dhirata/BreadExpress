@@ -3,6 +3,8 @@
 <% elsif current_user && current_user.role?(:customer) %>
 	<%= render :partial => 'customer_home' %>
 <!-- Add baker and shipper roles later! -->
+<% elsif current_user && current_user.role?(:baker) %>
+	<%= render :partial => 'baker_home' %>
 <% else %>
 	<%= render :partial => 'general_home' %>
 <% end %>

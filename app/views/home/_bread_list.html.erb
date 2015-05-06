@@ -1,0 +1,19 @@
+<% unless @bread.empty? %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Bread Name</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bread.each do |name, quan| %>
+      <tr>
+        <td><%= name %></td>
+        <td><%= quan %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<% end %>

@@ -1,0 +1,13 @@
+<h2><%= "Welcome To The Bread Express System, #{@user.username}!" %></h2>
+<p>This is your baking list</p>
+<p class="supertiny">&nbsp; </p>
+<% if @bread.empty? && @muffins.empty? && @pastries.empty? %>
+	<p>Nothing to bake!</p>
+<% end %>
+<div class="row">
+<div class="small-5 columns">
+	<%= render :partial => "muffin_list" %>
+	<%= render :partial => "bread_list" %>
+	<%= render :partial => "pastry_list" %>
+</div>
+</div>

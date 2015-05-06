@@ -26,14 +26,15 @@ BreadExpress::Application.routes.draw do
   get 'privacy' => 'home#privacy', as: :privacy
   get 'search' => 'home#search', as: :search
   get 'cylon' => 'errors#cylon', as: :cylon
-  get 'admin_home' => 'home#admin_home', as: :admin_home
-  get 'customer_home' => 'home#customer_home', as: :customer_home
-  get 'checkout' => 'orders#checkout', as: :checkout
   
   # Set the root url
   root :to => 'home#home'  
   
   # Named routes
+  get 'admin_home' => 'home#admin_home', as: :admin_home
+  get 'customer_home' => 'home#customer_home', as: :customer_home
+  get 'baker_home' => 'home#baker_home', as: :baker_home
+  get 'checkout' => 'orders#checkout', as: :checkout
 
 
 

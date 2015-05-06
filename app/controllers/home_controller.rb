@@ -15,6 +15,11 @@ class HomeController < ApplicationController
   	elsif logged_in? && current_user.role?(:customer)
   		@user = current_user
   		@items = Item.all
+    elsif logged_in? && current_user.role?(:baker)
+      @user = current_user
+      @muffins = create_baking_list_for("muffins")
+      @bread = create_baking_list_for("bread")
+      @pastries = create_baking_list_for("pastries")
   	end
   		
   end

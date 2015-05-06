@@ -1,0 +1,19 @@
+<% unless @pastries.empty? %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Pastry Name</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pastries.each do |name, quan| %>
+      <tr>
+        <td><%= name %></td>
+        <td><%= quan %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<% end %>

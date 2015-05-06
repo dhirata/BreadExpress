@@ -1,0 +1,19 @@
+<% unless @muffins.empty? %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Muffin Name</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @muffins.each do |name, quan| %>
+      <tr>
+        <td><%= name %></td>
+        <td><%= quan %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<% end %>
